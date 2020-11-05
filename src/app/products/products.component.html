@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        <button type="button" class="btn btn-primary new-product-button" (click)="showAddProductComponent()">
+            New Product
+          </button>
+        <div class="table-responsive">
+            <table class="table ">
+                <thead>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </thead>
+                
+                <tr *ngFor="let pro of prodList | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                    <td>{{pro.Code}}</td>
+                    <td>{{pro.Name}}</td>
+                    <td>{{pro.Price}}</td>
+                    <td><button class="btn btn-primary">Edit</button></td>
+                    <td><button (click)="deleteProduct(pro)" class="btn btn-danger">Delete</button></td>
+                </tr>
+            </table>
+        </div>
+        <div class="text-center m-auto">
+            <ngb-pagination
+                [(page)]="page"
+                [pageSize]="pageSize"
+                [collectionSize]="prodList.length">
+            </ngb-pagination>
+        </div>
+    </div>
+</div>

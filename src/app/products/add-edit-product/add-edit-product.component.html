@@ -1,0 +1,16 @@
+<form [formGroup]="productForm" class="add-product-form">
+    <div class="input-group input-item">
+        <label class="input-group-text">Code : </label>
+        <input class="form-control" formControlName="code" placeholder="Enter code"/>    
+    </div>
+    <div class="input-group input-item">
+        <label class="input-group-text">Name : </label>
+        <input class="form-control" formControlName="name" placeholder="Enter a new product name" />    
+    </div>
+
+    <div class="input-group input-item">
+        <label class="input-group-text">Price : </label>
+        <input class="form-control" formControlName="price" type="number" placeholder="Enter a price name" /> 
+    </div>
+    <button class="btn btn-success" (click)="addProduct()">Save</button>
+</form>

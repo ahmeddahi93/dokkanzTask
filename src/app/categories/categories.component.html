@@ -1,0 +1,46 @@
+<div class="container">
+    
+    <div class="row">
+        <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary new-category-button" data-toggle="modal" data-target="#exampleModal">
+    New Category
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Categories</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="text" style="width: 100%;" placeholder="Enter a new category name" [(ngModel)]="categoryName" required>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="addCategory()">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+    <div class="all">
+        
+      <div class="row">
+        
+        <div class="categories col-lg-3 col-md-6 col-sm-12 " *ngFor="let category of categoryList">
+            
+          <div class="cat-item">
+                <img src="../../assets/img/b.jpg"  alt="...">
+                <div class="item-body text-center pt-2 pb-2">
+                    <h5 class="card-title">{{category.Name}}</h5>
+                    <a [routerLink]="['/Products',category.ID]"></a>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
