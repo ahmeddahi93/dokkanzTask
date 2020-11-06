@@ -1,16 +1,20 @@
 <form [formGroup]="productForm" class="add-product-form">
     <div class="input-group input-item">
         <label class="input-group-text">Code : </label>
-        <input class="form-control" formControlName="code" placeholder="Enter code"/>    
+        <input class="form-control" formControlName="code" placeholder="Enter code"/>
+        <span *ngIf="submitted && code.invalid">Code Is Required</span>    
     </div>
     <div class="input-group input-item">
         <label class="input-group-text">Name : </label>
         <input class="form-control" formControlName="name" placeholder="Enter a new product name" />    
+        <span *ngIf="submitted && name.invalid">Name Is Required</span>    
     </div>
 
     <div class="input-group input-item">
         <label class="input-group-text">Price : </label>
         <input class="form-control" formControlName="price" type="number" placeholder="Enter a price name" /> 
+        <span *ngIf="submitted && price.invalid">Price Is Required</span>    
     </div>
-    <button class="btn btn-success" (click)="addProduct()">Save</button>
+    <button class="btn btn-success" *ngIf="!product" (click)="addProduct()">Save</button>
+    <button class="btn btn-success" *ngIf="product" (click)="editProduct()">Edit</button>
 </form>

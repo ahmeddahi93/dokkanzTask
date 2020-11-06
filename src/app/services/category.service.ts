@@ -8,18 +8,19 @@ export class CategoryService {
 
   categoryList: Icategory[];
   constructor() {
-    this.categoryList = [{ ID: 1, Name: "Mobiles"},
-    { ID: 2, Name: 'Labtops'},
-    { ID: 3, Name: 'Air Codetioners'},
-    { ID: 4, Name: 'Perfums'},
-    { ID: 5, Name: 'Glasses'},
-    { ID: 6, Name: 'Clothes'},
-    { ID: 7, Name: 'Screens'},
+    this.categoryList = [{ ID: 1, Name: "Mobiles" },
+    { ID: 2, Name: 'Labtops' },
+    { ID: 3, Name: 'Air Codetioners' },
+    { ID: 4, Name: 'Perfums' },
+    { ID: 5, Name: 'Glasses' },
+    { ID: 6, Name: 'Clothes' },
+    { ID: 7, Name: 'Screens' },
     { ID: 8, Name: 'Toys' }];
   }
 
   getAllCategories(): Icategory[] {
-    return this.categoryList;
+    const categories = this.categoryList;
+    return categories;
   }
 
   getCategoryByID(catId): Icategory {
@@ -33,7 +34,7 @@ export class CategoryService {
       const newCategory: Icategory = { Name: name, ID: (this.categoryList[this.categoryList.length - 1].ID + 1) };
       this.categoryList.push(newCategory);
     }
-    else{
+    else {
       alert("Category is already exist");
     }
 

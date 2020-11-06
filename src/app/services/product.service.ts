@@ -17,7 +17,7 @@ export class ProductService {
     { ID: 5, Name: 'Huawei Mate 20 pro', Code: 104, Price: 10000, CategoryID: 1 },
     { ID: 6, Name: 'Oppo', Code: 105, Price: 9000, CategoryID: 1 },
     { ID: 20, Name: 'Huawei Mate 10', Code: 120, Price: 4000, CategoryID: 1 },
-    { ID: 5, Name: 'iphone 6s', Code: 121, Price: 4500, CategoryID: 1 },
+    { ID: 65, Name: 'iphone 6s', Code: 121, Price: 4500, CategoryID: 1 },
     { ID: 7, Name: 'Dell', Code: 106, Price: 11000, CategoryID: 2 },
     { ID: 8, Name: 'Hp', Code: 107, Price: 12000, CategoryID: 2 },
     { ID: 9, Name: 'Lenovo', Code: 109, Price: 13000, CategoryID: 2 },
@@ -28,10 +28,11 @@ export class ProductService {
     { ID: 14, Name: 'Tornado', Code: 114, Price: 9000, CategoryID: 3 },
     { ID: 15, Name: 'Jumbo', Code: 115, Price: 12000, CategoryID: 3 }];
   }
-  
-  
+
+
   getProductsByCatID(catID): Iproduct[] {
-    return this.ProdList.filter((prod) => prod.CategoryID == catID)
+    const products = this.ProdList.filter((prod) => prod.CategoryID == catID);
+    return products && products.reverse();
   }
 
   addProduct(productI: { code: number, name: string, price: number }, CategoryID: number) {
@@ -41,9 +42,22 @@ export class ProductService {
       this.ProdList.push(newProduct);
     }
     else {
-      alert("Category is already exist");
+      alert("Product is already exist");
     }
+  }
 
+
+  editProduct(productI: Iproduct) {
+    const existProduct = this.ProdList.find(product => (product.Code == productI.Code && product.ID != productI.ID));
+    console.log('existed product:', existProduct);
+    if (existProduct) {
+      alert('product with this Code already Existed');
+      return;
+    }
+    const existProductIndex = this.ProdList.findIndex(product => product.ID === productI.ID);
+    console.log('product index: ', existProductIndex);
+    console.log('product to edit: ', productI);
+    this.ProdList[existProductIndex] = productI;
   }
 
   deleteProduct = (product: Iproduct) => {

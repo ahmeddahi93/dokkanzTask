@@ -7,3 +7,7 @@
 label.input-group-text {
     width: 70px;
 }
+span{
+    color: red;
+    display: block;
+}

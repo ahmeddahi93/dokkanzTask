@@ -54,6 +54,16 @@ export class ProductsComponent implements OnInit {
     });
   }
 
+  showEditProductComponent = (product: Iproduct) => {
+    const editProductModal = this.modalService.open(AddEditProductComponent);
+    editProductModal.componentInstance.product = product;
+    editProductModal.result.then(product => {
+      console.log('after clode modal');
+      this._productService.editProduct(product);
+      this.getProducts();
+    });
+  }
+
   deleteProduct = (product: Iproduct) => {
     this._productService.deleteProduct(product);
     this.getProducts();
